@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <!-- Start JavaScript -->
+            <script src="{{asset(asset_front ~ '/js/jquery-1.9.1.min.js')}}"></script> <!-- jQuery library -->
+        {% endblock %}
+    </body>
+</html>

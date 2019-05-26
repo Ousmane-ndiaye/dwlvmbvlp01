@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{asset(asset_front ~ '/js/jquery.easing.1.3.min.js')}}"></script> <!-- jQuery Easing --> 
+    <script src="{{asset(asset_front ~ '/js/jquery-ui/jquery.ui.core.js')}}"></script> <!-- jQuery Ui Core-->
+    <script src="{{asset(asset_front ~ '/js/jquery-ui/jquery.ui.widget.js')}}"></script> <!-- jQuery Ui Widget -->
+    <script src="{{asset(asset_front ~ '/js/jquery-ui/jquery.ui.accordion.js')}}"></script> <!-- jQuery Ui accordion--> 
+    <script src="{{asset(asset_front ~ '/js/jquery-cookie.js')}}"></script> <!-- jQuery cookie --> 
+    <script src="{{asset(asset_front ~ '/js/ddsmoothmenu.js')}}"></script> <!-- Nav Menu ddsmoothmenu -->
+    <script src="{{asset(asset_front ~ '/js/jquery.flexslider.js')}}"></script> <!-- Flex Slider  -->
+    <script src="{{asset(asset_front ~ '/js/colortip.js')}}"></script> <!-- Colortip Tooltip Plugin  -->
+    <script src="{{asset(asset_front ~ '/js/tytabs.js')}}"></script> <!-- jQuery Plugin tytabs  -->
+    <script src="{{asset(asset_front ~ '/js/jquery.ui.totop.js')}}"></script> <!-- UItoTop plugin  -->
+    <script src="{{asset(asset_front ~ '/js/carousel.js')}}"></script> <!-- jQuery Carousel  -->
+    <script src="{{asset(asset_front ~ '/js/jquery.isotope.min.js')}}"></script> <!-- Isotope Filtering  -->
+    <script src="{{asset(asset_front ~ '/js/twitter/jquery.tweet.js')}}"></script> <!-- jQuery Tweets -->
+    <script src="{{asset(asset_front ~ '/js/jflickrfeed.min.js')}}"></script> <!-- jQuery Flickr -->
+    <script src="{{asset(asset_front ~ '/js/social-options.js')}}"></script> <!-- social options , twitter, flickr.. -->
+    <script src="{{asset(asset_front ~ '/js/doubletaptogo.js')}}"></script> <!-- Touch-friendly Script  -->
+    <script src="{{asset(asset_front ~ '/js/fancybox/jquery.fancybox.js')}}"></script> <!-- jQuery FancyBox -->
+    <script src="{{asset(asset_front ~ '/js/jquery.sticky.js')}}"></script> <!-- jQuery Sticky -->
+    <script src="{{asset(asset_front ~ '/js/custom.js')}}"></script> <!-- Custom Js file for javascript in html -->
+    <!-- End JavaScript -->
+    
+    <!-- Start Style Switcher -->
+    <script src="{{asset(asset_front ~ '/js/styleswitcher.js')}}"></script>
+    <div class="switcher"></div><!-- Div Contain Options -->
+    <!-- End Style Switcher -->
+{% endblock %}
+
+{% block body %}{% endblock %}
