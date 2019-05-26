@@ -1,20 +1,90 @@
 {% extends 'pages/front/base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Accueil!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block main_page %}
+    <div class="slider-1 clearfix">
+        <div class="flex-container">
+            <div class="flexslider loading">
+                <ul class="slides">
+                    <li style="background:url({{asset(asset_front ~ '/images/img/sliders/slider-1/slider-bg-1.jpg')}}) no-repeat;background-position:50% 0">
+                        <div class="container">
+                            <div class="sixteen columns contain">
+                                <h2 data-toptitle="20%">Invention Theme for Business Agency and Creative Portfolios</h2>
+                                <p data-bottomtext="39%">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the 1500s
+                                </p>
+                                <div class="links" data-bottomlinks="20%">
+                                    <a href="index.html#" class="button medium normal">Read More</a>
+                                    <a href="index.html#" class="button medium color">Purchase Now</a>
+                                </div>
+                                <img src="{{asset(asset_front ~ '/images/img/sliders/slider-1/slider-item-1.png')}}" class="item"  data-topimage="16%"/>
+                            </div>
+                        </div><!-- End Container -->
+                    </li><!-- End item -->
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                    <li style="background:url({{asset(asset_front ~ '/images/img/sliders/slider-1/slider-bg-3.jpg')}}) no-repeat; background-position:50% 0">
+                        <div class="container">
+                            <div class="sixteen columns contain">
+                                <h2 data-toptitle="20%">Invention Theme for Business Agency and Creative Portfolios</h2>
+                                <p data-bottomtext="39%">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the 1500s
+                                </p>
+                                <div class="links" data-bottomlinks="20%">
+                                    <a href="index.html#" class="button medium normal">Read More</a>
+                                    <a href="index.html#" class="button medium color">Purchase Now</a>
+                                </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/projet-web/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/projet-web/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
-</div>
+                                <img src="{{asset(asset_front ~ '/images/img/sliders/slider-1/slider-item-2.png')}}" class="item" data-topimage="8%"/>
+                            </div>
+                        </div><!-- End Container -->
+                    </li><!-- End item -->
+
+                    <li style="background:url({{asset(asset_front ~ '/images/img/sliders/slider-1/slider-bg-2.jpg')}}) no-repeat; background-position:50% 0">
+                        <div class="container">
+                            <div class="sixteen columns contain">
+                    
+                                <h2 data-toptitle="20%">Invention Theme for Business Agency and Creative Portfolios</h2>
+                                <p data-bottomtext="39%">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the 1500s
+                                </p>
+                                <div class="links" data-bottomlinks="20%">
+                                    <a href="index.html#" class="button medium normal">Read More</a>
+                                    <a href="index.html#" class="button medium color">Purchase Now</a>
+                                </div>
+                                <img src="{{asset(asset_front ~ '/images/img/sliders/slider-1/slider-item-4.png')}}" class="item" data-topimage="9%"/>
+                            </div>
+                        </div><!-- End Container -->
+                    </li><!-- End item -->
+
+                    <li style="background:url({{asset(asset_front ~ '/images/img/sliders/slider-1/slider-bg-3.jpg')}}) no-repeat; background-position:50% 0">
+                        <div class="container">
+                            <div class="sixteen columns contain">
+                            
+                                <h2 data-toptitle="20%">Invention Theme for Business Agency and Creative Portfolios</h2>
+                                <p data-bottomtext="39%">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the 1500s
+                                </p>
+                                <div class="links" data-bottomlinks="20%">
+                                    <a href="index.html#" class="button medium normal">Read More</a>
+                                    <a href="index.html#" class="button medium color">Purchase Now</a>
+                                </div>
+
+                                <div class="item" data-topimage="23%">
+                                    <div class="video-wrap widescreen item">
+                                        <iframe src="http://www.youtube.com/embed/iTo-lLl7FaM?showinfo=0" frameborder="0" allowfullscreen ></iframe>
+                                    </div><!-- End video wrap -->
+                                <!-- End Youtube -->
+                                </div><!-- End -->
+                            </div>
+                        </div><!-- End Container -->
+                    </li><!-- End item -->
+                </ul>
+            </div>
+        </div>
+    </div><!-- End slider -->
 {% endblock %}

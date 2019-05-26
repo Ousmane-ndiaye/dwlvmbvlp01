@@ -12,7 +12,7 @@ class DefaultController extends BaseController
      */
     public function index()
     {
-        return $this->render('pages/front/accueil.html.twig', [
+        return $this->render('pages/one-page.html.twig', [
             'controller_name' => 'DefaultController',
         ]);
     }

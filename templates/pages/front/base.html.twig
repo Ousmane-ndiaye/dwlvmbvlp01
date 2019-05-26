@@ -4,6 +4,21 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <!-- Main Style -->
+    <link rel="stylesheet" href="{{asset(asset_front ~ '/css/style.css')}}"> 
+    <!-- Color Style -->
+    <link rel="stylesheet" href="{{asset(asset_front ~ '/css/skins/colors/red.css')}}" name="colors">
+    <!-- Layout Style -->
+    <link rel="stylesheet" href="{{asset(asset_front ~ '/css/layout/wide.css')}}" name="layout">
+    <!-- Style Switcher Box -->
+    <link rel="stylesheet" href="{{asset(asset_front ~ '/css/switcher/style.css')}}">
+    
+    <!--[if lt IE 9]>
+        <script src="{{asset(asset_front ~ '/js/html5.js')}}"></script>
+    <![endif]-->
+    
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
 {% endblock %}
 
 {% block javascripts %}
@@ -35,4 +50,113 @@
     <!-- End Style Switcher -->
 {% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+    <div id="wrap" class="boxed">
+        {% block header_page %}
+            <header>
+                <div class="top-bar">
+                    <div class="container clearfix">
+                        <div class="slidedown">
+                            <div class="eight columns">
+                                <div class="phone-mail">
+                                    <a><i class="icon-phone"></i> Phone : +22 665 450 210</a>
+                                    <a href="https://themes.jozoor.com/invention-html/white/info@website.com"><i class="icon-envelope-alt"></i> Mail : info@website.com</a>
+                                </div><!-- End phone-mail -->
+                            </div>
+                            <div class="eight columns">
+                                <div class="social">
+                                    <a href="index.html#"><i class="social_icon-twitter s-14"></i></a>
+                                    <a href="index.html#"><i class="social_icon-facebook s-18"></i></a>
+                                    <a href="index.html#"><i class="social_icon-dribbble s-18"></i></a>
+                                    <a href="index.html#"><i class="social_icon-appstore s-18"></i></a>
+                                    <a href="index.html#"><i class="social_icon-amazon s-18"></i></a>
+                                    <a href="index.html#"><i class="social_icon-rss s-18"></i></a>
+                                </div>
+                            </div><!-- End social-icons -->
+                        </div><!-- End slidedown -->
+                    </div><!-- End Container -->
+                </div><!-- End top-bar -->
+            
+                <div class="main-header">
+                    <div class="container clearfix">
+                        <a href="index.html#" class="down-button"><i class="icon-angle-down"></i></a><!-- this appear on small devices -->
+                        <div class="one-third column">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="{{asset(asset_front ~ '/images/logo.png')}}" alt="Invention - Creative Responsive Theme" />
+                                </a>
+                            </div>
+                        </div><!-- End Logo -->
+                        
+                        <div class="two-thirds column">
+                            <nav id="menu" class="navigation" role="navigation">
+                                <a href="index.html#">Sen elite</a><!-- this appear on small devices -->
+                                <ul id="nav">
+                                    <li class="active"><a href="index.html">Accueil</a></li>
+                                    <li><a href="about.html#1">Pages</a></li>
+                                    <li><a href="shortcodes.html#2">Features</a></li>
+                                    <li><a href="portfolio_4.html#4">Portfolio</a></li>
+                                    <li><a href="blog.html#5">Blog</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div><!-- End Menu -->
+                    </div><!-- End Container -->
+                </div><!-- End main-header -->
+            
+            </header><!-- <<< End Header >>> -->
+        {% endblock %}
+        {% block main_page %}
+        {% endblock %}
+
+        {% block footer_page %}
+            <footer>
+                <div class="footer-top">
+                    <div class="container clearfix">
+                        <div class="one-third column widget">
+                            <h3 class="title">Latest Tweets</h3>
+                            <div id="tweets-footer" class='tweet query footer'></div><!-- Tweets Code -->
+                        </div><!-- End Tweets Widget -->
+                        
+                        <div class="one-third column widget">
+                            <h3 class="title">Flickr Stream</h3>
+                            <ul id="footer" class="thumbs"></ul> <!-- Flickr Code -->
+                        </div><!-- End Flickr Widget -->
+                        
+                        <div class="one-third column widget">
+                            <div class="subscribe"> 
+                                <h3 class="title">Subscribe</h3>
+                                <p>Subscribe to our email newsletter to receive our news, updates and awesome free files, tuts and sources .</p>
+                                <form action="index.html#">
+                                    <input type="text" class="mail" value="your@email.com" onBlur="if(this.value == '') { this.value = 'your@email.com'; }" 
+                                    onfocus="if(this.value == 'your@email.com') { this.value = ''; }"/>
+                                    <input type="submit" value="Subscribe" class="submit" />
+                                </form>
+                            </div>
+                        </div><!-- End Subscribe Widget -->
+                    </div><!-- End container -->
+                </div><!-- End footer-top -->
+
+                <div class="footer-down">
+                    <div class="container clearfix">
+                        <div class="eight columns">
+                            <span class="copyright">© Copyright 2013 <a href="index.html">Invention</a>. All Rights Reserved. by <a href="http://jozoor.com/" target="_blank">jozoor</a></span>
+                        </div><!-- End copyright -->
+                        
+                        <div class="eight columns">
+                            <div class="social">
+                                <a href="index.html#"><i class="social_icon-twitter s-14"></i></a>
+                                <a href="index.html#"><i class="social_icon-facebook s-18"></i></a>
+                                <a href="index.html#"><i class="social_icon-dribbble s-18"></i></a>
+                                <a href="index.html#"><i class="social_icon-gplus s-18"></i></a>
+                                <a href="index.html#"><i class="social_icon-pinterest s-18"></i></a>
+                                <a href="index.html#"><i class="social_icon-youtube s-18"></i></a>
+                                <a href="index.html#"><i class="social_icon-rss s-18"></i></a>
+                            </div>
+                        </div><!-- End social icons -->
+                    </div><!-- End container -->
+                </div><!-- End footer-top -->
+            </footer><!-- <<< End Footer >>> -->
+        {% endblock %}
+    </div>
+{% endblock %}
