@@ -2,22 +2,27 @@
 
 namespace App\Controller;
 
-use App\Entity\Categorie;
 use App\Entity\Produit;
-use App\Repository\CategorieRepository;
-use App\Repository\ProduitRepository;
+use App\Entity\Categorie;
+use App\Entity\CollectionProduit;
+use App\Mapping\BaseMapping;
 use App\Services\BoutiqueService;
+use App\Repository\ProduitRepository;
+use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/boutique")
  */
 class BoutiqueController extends AbstractController
-{
+{   
+    /**
+     * @param BaseMapping $cm
+     */
     private $em;
     private $categorieRepository;
     private $produitRepository;
@@ -26,7 +31,7 @@ class BoutiqueController extends AbstractController
     private $serializer;
     private $validator;
 
-    public function __construct(ValidatorInterface $validator, SerializerInterface $serializer, ProduitRepository $produitRepository, EntityManagerInterface $em, CategorieRepository $categorieRepository)
+    public function __construct(BaseMapping $bm,ValidatorInterface $validator, SerializerInterface $serializer, ProduitRepository $produitRepository, EntityManagerInterface $em, CategorieRepository $categorieRepository)
     {
         $this->categorieRepository = $categorieRepository;
         $this->produitRepository = $produitRepository;
@@ -35,6 +40,7 @@ class BoutiqueController extends AbstractController
         $this->message = 'message';
         $this->status = 'status';
         $this->validator = $validator;
+        $this->bm=$bm;
     }
     /**
      * @Route("/listAll", name="boutique_listAll", methods={"GET"})
@@ -88,5 +94,14 @@ class BoutiqueController extends AbstractController
             return  $this->json($data);
         }
         return $this->json($dataProduitDetail, 200);
+    }
+    /**
+     * @Route("/showAll", name="allContent",methods={"GET"})
+     */
+    public function showAll(){
+        $produits=$this->getDoctrine()->getRepository(Produit::class)->findAll();
+        $categories=$this->getDoctrine()->getRepository(Categorie::class)->findAll();
+        $collections=$this->getDoctrine()->getRepository(CollectionProduit::class)->findAll();
+        return $this->bm->mapAllContent($produits,$categories,$collections);
     }
 }

@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @Route("/produit", name="produit")
+ * @Route("/api/produit", name="produit")
  */
 class ProduitController extends AbstractController
 {
@@ -65,28 +65,52 @@ class ProduitController extends AbstractController
     /**
      * @Route("/add/{id}", name="produit_new", methods={"POST"})
      */
-    public function new(Request $request, Categorie $categorie)
+    public function newProduit(Request $request, Categorie $categorie)
     {
         $produit = new Produit();
-        $values = json_decode($request->getContent(), true);
+        $nomsImage= [];
+        $values = json_decode($request->getContent(),true);
         if (!$values) {
             $values = $request->request->all();
         }
-        $collection = $this->collectionProduitRepository->find($values['collectionproduit']);
-        $produit
+        $tails = explode(",", $values['tailles']);
+        $cols = explode(",", $values['colorsd']);
+        $d = intval($values["tailletab"]);
+        if($requestFile=$request->files->all()){
+               // dump("ok");
+                for ($i=0; $i < $d; $i++) { 
+                $file=$requestFile["images".$i];
+                
+                $fileName=md5(uniqid()).'.'.$file->guessExtension();
+                $file->move($this->getParameter('image_directory'),$fileName);
+                }
+                array_push($nomsImage, $fileName);
+        }
+        if ($requestFile=$request->files->all()) {
+            $file1=$requestFile["photo"];
+            $fileName1=md5(uniqid()).'.'.$file1->guessExtension();
+                    $file1->move($this->getParameter('image_directory'),$fileName1);
+        }
+        /*  for ($i=1; $i < $values['tailletab']; $i++) { 
+            # code...
+            $imgsName = explode(",", $values['names']);
+        }*/
+        $collection = $this->collectionProduitRepository->find($values['collect']);
+       $produit
             ->setDesignation($values['designation'])
             ->setDescription($values['description'])
             ->setPrix($values['prix'])
             ->setQuantiteStock($values['quantiteStock'])
             ->setEnStock($values['quantiteStock'])
-            ->setTailles($values['tailles'])
-            ->setColors($values['colors'])
-            ->setImages($values['images'])
+            ->setTailles($tails)
+            ->setColors($cols)
+            ->setImages($nomsImage)
             ->setStatus(true)
             ->setCategorie($categorie)
             ->setCollectionproduit($collection)
-            ->setPhoto($values['photos']);
-        /* if($requestFile=$request->files->all()){
+            ->setPhoto($fileName1);
+
+         /*if($requestFile=$request->files->all()){
                 
             $file=$requestFile['file'];
             $extension=$file->guessExtension();
@@ -102,7 +126,7 @@ class ProduitController extends AbstractController
                 $this->status => 403
             ];
             return  $this->json($data);
-          } */
+          }*/
         $this->em->persist($produit);
         $errors = $this->validator->validate($produit);
         if (count($errors)) {
@@ -111,7 +135,7 @@ class ProduitController extends AbstractController
                 'Content-Type' => 'application/json'
             ]);
         }
-        $this->em->flush();
+       $this->em->flush();
         $data = [
             $this->message => 'produit crée',
             $this->status => 201

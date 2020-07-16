@@ -42,18 +42,18 @@ class CategorieController extends AbstractController
         return $this->json($data, 200);
     }
     /**
-     * @Route("/add", name="category_new", methods={"POST"})
+     * @Route("/api/add", name="category_new", methods={"POST"})
      */
     public function newCategory(Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator)
     {
         $nomCategory = '';
         $category = new Categorie();
         $form = $this->createForm(CategorieType::class, $category);
-        $data = json_decode($request->getContent(), true);
+        $data = json_decode($request->getContent());
         if (!$data) {
             $data = $request->request->all();
         }
-        $nomCategory = $data['libelle'];
+        $nomCategory = $data->libelle;
         $category->setLibelle($nomCategory);
         if (!$form->isSubmitted()) {
             $errors = $validator->validate($category);
@@ -80,7 +80,7 @@ class CategorieController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="category_edit", methods={"PUT"})
+     * @Route("/api/edit/{id}", name="category_edit", methods={"PUT"})
      */
     public function editercategory(Request $request, Categorie $categorie, SerializerInterface $serializer, EntityManagerInterface $entityManager, ValidatorInterface $validator, $id = null)
     {

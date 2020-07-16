@@ -14,6 +14,7 @@ class CommandeMapping extends BaseMapping{
                $liste[]=array(
                    "id"=>$commande->getId(),
                    "userId"=>$commande->getUser()->getId(),
+                   "nomComplet"=>$commande->getUser()->getNomComplet(),
                    "dateInitial"=>$commande->getDateInitiale(),
                    "dateLivraison"=>$commande->getDateLivraison(),
                    "code"=>$commande->getCode(),
@@ -33,6 +34,7 @@ class CommandeMapping extends BaseMapping{
             $data=array(
                    "id"=>$commande->getId(),
                    "userId"=>$commande->getUser()->getId(),
+                   "nomComplet"=>$commande->getUser()->getNomComplet(),
                    "dateInitial"=>$commande->getDateInitiale(),
                    "dateLivraison"=>$commande->getDateLivraison(),
                    "code"=>$commande->getCode(),

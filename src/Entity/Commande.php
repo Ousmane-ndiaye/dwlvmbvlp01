@@ -60,7 +60,7 @@ class Commande
     private $numeroDestinataire;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255,)
      */
     private $statut;
 

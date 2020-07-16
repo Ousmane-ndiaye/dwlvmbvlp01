@@ -36,8 +36,10 @@ class CollectionController extends AbstractController
             );
             array_push($collection, $rem);
         }
-        $data = $serializer->serialize($collection, 'json');
-        return new JsonResponse($data, 200, [], true);
+        $datas = [
+            'collections' => $collection,
+        ];
+        return $this->json($datas);
     }
     /**
      * @Route("/add", name="collection_new", methods={"POST"})
@@ -47,11 +49,11 @@ class CollectionController extends AbstractController
         $nomCollection = '';
         $collects = new CollectionProduit();
         $form = $this->createForm(CollectionProduitType::class, $collects);
-        $data = json_decode($request->getContent(), true);
+        $data = json_decode($request->getContent());
         if (!$data) {
             $data = $request->request->all();
         }
-        $nomCollection = $data['nomCollection'];
+        $nomCollection = $data->libelle;
         $collects->setNomCollection($nomCollection);
         if (!$form->isSubmitted()) {
             $errors = $validator->validate($collects);
