@@ -104,4 +104,28 @@ class BoutiqueController extends AbstractController
         $collections=$this->getDoctrine()->getRepository(CollectionProduit::class)->findAll();
         return $this->bm->mapAllContent($produits,$categories,$collections);
     }
+    /**
+     * @Route("/returnAllCategorie", name="allCat",methods={"GET"})
+     */
+    public function getAllCategoriebycount(BoutiqueService $boutiqueService,CategorieRepository $categoRepository){
+        $categories = $categoRepository->findBy([], ['libelle' => 'ASC']);
+        $category = [];
+        $ligne = 0;
+
+        foreach ($categories as $key) {
+            $count = $boutiqueService->getCount($key->getId());   
+                     $rem = array(
+                'id' => $key->getId(),
+                'libelle' => $key->getLibelle(),
+                'ligne' => $ligne,
+                'count' => $count
+            );
+            array_push($category, $rem);
+        }
+        $data = [
+            'categories' => $category
+        ];
+        return $this->json($data, 200);
+    }
+
 }

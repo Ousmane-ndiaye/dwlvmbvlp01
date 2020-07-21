@@ -66,4 +66,22 @@ class BoutiqueService extends AbstractController
             ->setParameter('id', $produit)
             ->getResult();
     }
+    
+    public function getCount($cat)
+    {
+        $query = $this->manager->createQuery(
+
+            "SELECT  COUNT(p)
+
+            FROM App\Entity\Produit p
+            JOIN p.categorie c
+            WHERE c.id = :id
+            
+            "
+        );
+        return $query
+        ->setParameter('id', $cat)
+        ->getSingleScalarResult()
+        ;
+    }
 }

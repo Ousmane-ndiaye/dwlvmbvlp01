@@ -156,17 +156,7 @@ class Produit
         return $this;
     }
 
-    public function getEnStock(): ?bool
-    {
-        return $this->enStock;
-    }
-
-    public function setEnStock(bool $enStock): self
-    {
-        $this->enStock = $enStock;
-
-        return $this;
-    }
+  
 
     public function getPhoto(): ?string
     {
@@ -291,6 +281,26 @@ class Produit
                 $produitCommande->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of enStock
+     */ 
+    public function getEnStock()
+    {
+        return $this->enStock;
+    }
+
+    /**
+     * Set the value of enStock
+     *
+     * @return  self
+     */ 
+    public function setEnStock($enStock)
+    {
+        $this->enStock = $enStock;
 
         return $this;
     }

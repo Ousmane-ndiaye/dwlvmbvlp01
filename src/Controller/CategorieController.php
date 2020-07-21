@@ -14,13 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-/**
- * @Route("/categorie")
- */
+
 class CategorieController extends AbstractController
 {
     /**
-     * @Route("/show", name="category_indexshow", methods={"GET"})
+     * @Route("categorie/show", name="category_indexshow", methods={"GET"})
      */
     public function indexCategory(CategorieRepository $categoRepository, SerializerInterface $serializer)
     {
@@ -42,7 +40,7 @@ class CategorieController extends AbstractController
         return $this->json($data, 200);
     }
     /**
-     * @Route("/api/add", name="category_new", methods={"POST"})
+     * @Route("api/categorie/add", name="category_new", methods={"POST"})
      */
     public function newCategory(Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator)
     {
@@ -80,7 +78,7 @@ class CategorieController extends AbstractController
     }
 
     /**
-     * @Route("/api/edit/{id}", name="category_edit", methods={"PUT"})
+     * @Route("api/categorie//edit/{id}", name="category_edit", methods={"PUT"})
      */
     public function editercategory(Request $request, Categorie $categorie, SerializerInterface $serializer, EntityManagerInterface $entityManager, ValidatorInterface $validator, $id = null)
     {

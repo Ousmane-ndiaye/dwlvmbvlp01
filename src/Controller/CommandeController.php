@@ -69,6 +69,10 @@ class CommandeController extends BaseController
             $commande->setDateInitiale(new DateTime(date('Y-m-d H:i:s')));
             $commande->setUser($this->getUser());
             $commande->setStatut("on");
+            $commande->setCouleur($produit["couleur"]);
+            $commande->setTaille($produit["taille"]);
+
+            
 
                 $code=date('d').date('m').date('s').$this->getUser()->getTelephone();
                 $commande->setCode($code);

@@ -82,10 +82,10 @@ class UserController extends BaseController
             ];
             return new JsonResponse($data, 500);
         }
-            $user->setPassword($passwordEncoder->encodePassword($user, $values["password"]));
+            $user->setPassword($passwordEncoder->encodePassword($user, "admin" ));
             $user->setRoles(['ROLE_ADMIN']);
             $user->setNomComplet($values["nomComplet"]);
-            $user->setAdresse($values["adresse"]);
+            $user->setAdresse($values["address"]);
             $user->setEmail($values["email"]);
             $user->setTelephone($values["telephone"]);
             $errorsAssert = $this->validator->validate($user);
@@ -167,6 +167,30 @@ class UserController extends BaseController
             return new JsonResponse($data, 201);
     }
 
+     /**
+     *@Rest\Post("/ajoutVisitor")
+     */
+    public function ajoutVisitor(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $user = new User();
+        $values = json_decode($request->getContent(),true);
+     
+            $user->setRoles(['ROLE_CLIENT']);
+            $user->setNomComplet($values["nomComplet"]);
+            $user->setTelephone($values["telephone"]);
+            $errorsAssert = $this->validator->validate($user);
+            if (count($errorsAssert) > 0) {
+                $err = $this->serializer->serialize($errorsAssert, 'json');
+                return new JsonResponse($err, 500);
+            }
+            $this->em->persist($user);
+            $this->em->flush();
+            $data = [
+                'status' => 201,
+                'message' => 'Le client a été crée'
+            ];
+            return new JsonResponse($data, 201);
+    }
     /**
      *@Rest\Post("/api/updateClient/{id}")
      */

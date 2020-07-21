@@ -64,6 +64,21 @@ class Commande
      */
     private $statut;
 
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $details;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $taille;
+
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $couleur;
+
     public function __construct()
     {
         $this->produitCommandes = new ArrayCollection();
@@ -208,6 +223,42 @@ class Commande
     public function setStatut($statut)
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(string $details): self
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    public function getTaille(): ?string
+    {
+        return $this->taille;
+    }
+
+    public function setTaille(?string $taille): self
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(string $couleur): self
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }
